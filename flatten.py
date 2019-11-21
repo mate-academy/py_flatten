@@ -7,5 +7,11 @@ def flatten(lis: List[Any]) -> List[int]:
     string = str(lis)
     string = ''.join(string.split('['))
     string = ''.join(string.split(']'))
+    res = []
+    for char in string:
+        try:
+            res.append(int(char))
+        except ValueError:
+            continue
 
-    return list(eval(string)) if lis else []
+    return res
