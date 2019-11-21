@@ -10,7 +10,9 @@ def flatten(lst: List[Any]) -> List[int]:
     :param lst: List[Any]
     :return: List[int]
     """
-    for i, element in enumerate(lst):
-        while i < len(lst) and isinstance(lst[i], list):
-            lst[i:i + 1] = lst[i]
-    return lst
+    if not lst:
+        return lst
+    if isinstance(lst[0], list):
+        return flatten(lst[0]) + flatten(lst[1:])
+    return lst[:1] + flatten(lst[1:])
+
